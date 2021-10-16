@@ -19,10 +19,10 @@ window.onload = () => {
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		drawBall();
-		if(y + dy > canvas.height || y + dy < 0) {
+		if(y + dy > canvas.height - ballRadius || y + dy < 0) {
 		    dy = -dy;
 		}
-		if(x + dx > canvas.width || x + dx < 0) {
+		if(x + dx > canvas.width - ballRadius || x + dx < 0) {
 		    dx = -dx;
 		}
 		x += dx;
