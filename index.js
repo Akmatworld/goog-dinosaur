@@ -57,8 +57,17 @@ window.onload = () => {
 		drawBall();
 		drawPaddle();
 
-		if(y + dy > canvas.height - ballRadius || y + dy < 0) {
+		if(y + dy < ballRadius) {
 		    dy = -dy;
+		} else if(y + dy > canvas.height-ballRadius) {
+			if(x > paddleX && x < paddleX + paddleWidth) {
+		        dy = -dy;
+		    }
+		    else {
+		        alert("GAME OVER");
+		        document.location.reload();
+		        clearInterval(intervalId);
+		    } 
 		}
 
 		if(x + dx > canvas.width - ballRadius || x + dx < 0) {
@@ -81,5 +90,5 @@ window.onload = () => {
 		y += dy;
 	}
 
-	setInterval(draw, 10);
+	let intervalId = setInterval(draw, 10);
 }
